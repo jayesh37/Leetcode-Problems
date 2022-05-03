@@ -1,27 +1,27 @@
 class Solution {
 public:
     int findUnsortedSubarray(vector<int>& nums) {
-        vector<pair<int,int>> v;
-        
-        for(int i=0;i<nums.size();i++)
-        {
-            v.push_back({nums[i],i});
-        }
-        
-        sort(v.begin(),v.end());
-        
-        int start=nums.size()-1,end=0;
-        
-        for(int i=0;i<nums.size();i++)
-        {   
-            if(i!=v[i].second)
-            {
-                start= min(start,v[i].second);
-                end = max(end,v[i].second);
-            }
-        }
-        if(start>=end)
-            return 0;
-        return end-start+1;
+         int start = -1;
+         int end = -1;
+         int n= nums.size();
+         int prevHigh = n-1;
+         int prevLow = 0;
+         for(int i=0;i<n;i++){
+             if(nums[i]<nums[prevLow]){
+                 end = i;
+             } else {
+                 prevLow = i;
+             }
+         }
+
+         for(int i=n-1; i >= 0; i--){
+             if(nums[i] > nums[prevHigh]){
+                 start = i;
+             } else {
+                 prevHigh = i;
+             }
+         }
+
+         return (start>=0 && end>=0) ? (end-start)+1 : 0;
     }
 };
