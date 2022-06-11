@@ -1,12 +1,22 @@
 class Solution {
 public:
+    
+    int getSum(vector<int> &nums,int n)
+    {
+        int sum=0;
+        for(int i=0;i<n;i++)    
+            sum += nums[i];
+        
+        return sum;
+    }
+    
     int minOperations(vector<int>& nums, int x) {
         int l=0,ans= -1,n=nums.size();
-        int sum=0,curr_sum=0;
+        int curr_sum=0;
         
-        for(int i=0;i<n;i++)    sum += nums[i];
+        int sum = getSum(nums,n);
         
-        if(x>sum)   return -1;
+        // if(x>sum)   return -1;
         
         sum -= x;
         
@@ -17,7 +27,6 @@ public:
             {
                 curr_sum -= nums[l++];
             }
-            
             
             if(curr_sum == sum)
             {
