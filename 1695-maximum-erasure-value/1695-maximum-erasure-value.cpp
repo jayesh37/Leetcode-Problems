@@ -3,7 +3,10 @@ public:
     /*
     
     Move right pointer if we find that element already present
+    and keep adding it to sum
     
+    If an element is already present start removing all elements till
+    the repeated element present
     
     */
     int maximumUniqueSubarray(vector<int>& nums) {
