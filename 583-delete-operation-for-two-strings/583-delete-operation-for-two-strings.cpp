@@ -11,12 +11,10 @@ public:
             return dp[n][m];
         
         if(x[n-1]==y[m-1])
-            dp[n][m] = 1 + getlcs(x,y,n-1,m-1);
+            return dp[n][m] = 1 + getlcs(x,y,n-1,m-1);
         
         else
-            dp[n][m] = max(getlcs(x,y,n-1,m) , getlcs(x,y,n,m-1));
-        
-        return dp[n][m];
+            return dp[n][m] = max(getlcs(x,y,n-1,m) , getlcs(x,y,n,m-1));
     }
     
     int minDistance(string word1, string word2) {
